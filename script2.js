@@ -1,11 +1,11 @@
 const list = document.querySelector('ul')
 const showAllButton = document.querySelector('.showAll')
-const Descont = document.querySelector('.DescontBtn')
-let myLi = '';
+const descont = document.querySelector('.DescontBtn')
+const sum = document.querySelector('.reduceBtn')
 
 
 function showAll(productsarray) {
-  myLi = '';
+  let myLi = '';
   productsarray.forEach((product) => {
 
     myLi += `
@@ -33,5 +33,15 @@ showAll(discountedProduct);
 };
 
 
+function showSum() {
+ let myLi = ''
+  const sumprice = menuOptions.reduce((acc, product) => acc + product.price, 0);
+  myLi += `<li><p>Soma total: R$ ${sumprice.toFixed(2)}</p></li>`;
+  list.innerHTML = myLi;
+  
+}
+
+
+sum.addEventListener('click', showSum )
 showAllButton.addEventListener('click', () => showAll(menuOptions));
-Descont.addEventListener('click', showDiscounted);
+descont.addEventListener('click', showDiscounted);
